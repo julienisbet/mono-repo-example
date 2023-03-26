@@ -1,0 +1,46 @@
+{
+  "name": "backend-express-template",
+  "version": "2.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "env-cmd --silent -f ./.env.test jest --verbose --runInBand --testLocationInResults --passWithNoTests",
+    "test:watch": "npm run test -- --watch",
+    "start": "env-cmd --silent node server.js",
+    "start:watch": "env-cmd nodemon server.js",
+    "db:reset": "npm run db:drop && npm run db:setup && npm run db:seed",
+    "db:drop": "env-cmd --silent cross-var dropdb %PGDATABASE% && echo db dropped || echo db does not exist",
+    "db:setup": "env-cmd --silent createdb && echo db created || echo db already exists",
+    "db:seed": "env-cmd --silent psql -f ./sql/setup.sql",
+    "db:reset:test": "npm run db:drop:test && npm run db:setup:test && npm run db:seed:test",
+    "db:drop:test": "env-cmd -f ./.env.test cross-var dropdb %PGDATABASE% && echo db dropped || echo db does not exist",
+    "db:setup:test": "env-cmd -f ./.env.test cross-var createdb && echo db created || echo db already exists",
+    "db:seed:test": "env-cmd -f ./.env.test cross-var psql -f ./sql/setup.sql",
+    "heroku:setup": "heroku pg:psql -f ./sql/setup.sql"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/jest": "^28.1.1",
+    "@types/pg": "^8.6.5",
+    "@types/supertest": "2.0.12",
+    "eslint": "^8.17.0",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.6.2",
+    "supertest": "^6.2.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cross-var": "^1.1.0",
+    "env-cmd": "^10.1.0",
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
+  }
+}
