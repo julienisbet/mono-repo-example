@@ -5,7 +5,8 @@ RUN sudo apt-get install -y nodejs
 RUN sudo npm install npm@latest -g
 
 
-COPY . .
+COPY . .  
+ENV NODE_ENV=production
 RUN npm install
 RUN npm install --prefix client && npm run build --prefix client
 RUN BACKGROUND npm start
