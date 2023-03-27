@@ -1,13 +1,11 @@
 FROM vm/ubuntu:18.04
 
-# Install node
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
-    apt install nodejs && \
-    rm -f /etc/apt/sources.list.d/nodesource.list
-RUN npm install -g http-server
+RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
+RUN sudo npm install npm@latest -g
+
 
 COPY . .
-RUN echo 'hello' > hello.html
-
-RUN BACKGROUND http-server -p 8000
-EXPOSE WEBSITE http://localhost:8000
+RUN npm install
+RUN BACKGROUND npm start
+EXPOSE WEBSITE http://localhost:7890
