@@ -7,5 +7,6 @@ RUN sudo npm install npm@latest -g
 
 COPY . .
 RUN npm install
+RUN npm install --prefix client && npm run build --prefix client
 RUN BACKGROUND npm start
 EXPOSE WEBSITE http://localhost:7890
