@@ -6,7 +6,6 @@ export default function App() {
     const fetchData = async () => {
       const resp = await fetch('/api/example');
       const data = await resp.json();
-      console.log(data);
       setMessage(data.message);
     };
     fetchData();
