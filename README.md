@@ -16,7 +16,7 @@ _As with everything in this career, choosing one approach is a trade-off -- one 
 
 **Cons**
 
-- Single deployment (can become VERY complicated on larger apps)
+- Single deployment (can become complicated on larger apps)
 - Single repository can become very large and unweildy
 - Multiple teams working on a single repository can lead to merge conflicts galore slowing down development
 
