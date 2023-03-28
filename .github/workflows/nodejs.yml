@@ -14,6 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci --dev
+      - run: npm ci --dev --prefix client
       - run: npx eslint .
       - run: npm test
         env:
