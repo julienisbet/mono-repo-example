@@ -1,4 +1,5 @@
 {
+  "root": true,
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -24,10 +25,6 @@
     "cy": false
   },
   "rules": {
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": true, "packageDir": "./client" }
-    ],
     "eqeqeq": ["error", "always"],
     "no-console": ["warn", { "allow": ["info", "error"] }],
     "indent": [
